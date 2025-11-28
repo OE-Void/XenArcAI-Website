@@ -25,7 +25,7 @@ const nextConfig: NextConfig = {
 
   // Enable static optimization for pages that don't rely on server-side data
   experimental: {
-    optimizeCss: true,
+    // optimizeCss: true,
   },
 
   // Enable standalone build for Docker

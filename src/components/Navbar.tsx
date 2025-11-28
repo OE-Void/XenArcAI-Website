@@ -5,7 +5,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
-const Navbar = ({ hideOnBlog = false }: { hideOnBlog?: boolean }) => {
+const Navbar = () => {
   const [open, setOpen] = useState(false);
 
   return (

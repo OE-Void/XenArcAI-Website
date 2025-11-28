@@ -95,7 +95,7 @@ export default function RootLayout({
             </ProductionErrorBoundary>
           </ClientWrapper>
         </Suspense>
-        <Navbar hideOnBlog={true} />
+        <Navbar />
         <VisualEditsMessenger />
       </body>
     </html>
