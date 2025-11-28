@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { ExternalLink, Database, Brain, Code, Layers } from "lucide-react";
 import Link from "next/link";
 
-import HomeFooter from "@/components/HomeFooter";
+import Footer from "@/components/Footer";
 
 const projects = [
     {
@@ -58,8 +58,6 @@ const projects = [
 export default function ProjectsPage() {
     return (
         <div className="bg-stone-100 min-h-screen flex flex-col">
-
-
             <main className="flex-grow pt-24 md:pt-32">
                 <section className="py-16 md:py-32 max-w-7xl mx-auto">
                     {/* Header Section */}
@@ -70,7 +68,7 @@ export default function ProjectsPage() {
                             transition={{ duration: 0.6 }}
                             className="container flex flex-col gap-6 border-x py-4 max-lg:border-x lg:py-8 px-4 md:px-7"
                         >
-                            <h1 className="text-4xl font-extralight tracking-tight md:text-5xl lg:text-7xl">
+                            <h1 className="text-4xl font-playfair font-medium tracking-tight md:text-5xl lg:text-7xl">
                                 Our Projects
                             </h1>
                             <p className="text-muted-foreground max-w-[600px] tracking-[-0.32px] text-sm md:text-base">
@@ -79,65 +77,71 @@ export default function ProjectsPage() {
                         </motion.div>
                     </div>
 
-                    {/* Projects Grid */}
-                    <div className="lg:px-0! container border-x">
-                        <div className="items-center">
-                            <div className="grid flex-1 max-lg:divide-y lg:grid-cols-3 lg:divide-x">
-                                {projects.map((project, index) => (
-                                    <motion.div
-                                        key={index}
-                                        initial={{ opacity: 0, y: 20 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        transition={{ duration: 0.6, delay: index * 0.1 }}
-                                        className="relative isolate pt-5 text-start lg:pt-20"
-                                    >
-                                        <div className="px-4 lg:px-8">
-                                            <div className="inline-flex items-center justify-center rounded-lg bg-muted p-3 mb-4">
-                                                <project.icon className="h-6 w-6 text-foreground" />
+                    {/* Projects List */}
+                    <div className="container border-x-2">
+                        <div className="divide-y-2">
+                            {projects.map((project, index) => (
+                                <motion.div
+                                    key={index}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                                    className="group py-10 px-6 md:py-14 md:px-10 hover:bg-stone-50/50 transition-all duration-200"
+                                >
+                                    <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
+                                        {/* Icon & Title Column */}
+                                        <div className="flex-shrink-0 lg:w-1/4">
+                                            <div className="inline-flex items-center justify-center rounded-xl bg-white border shadow-sm p-4 mb-4 group-hover:scale-110 transition-transform duration-300">
+                                                <project.icon className="h-8 w-8 text-foreground" />
                                             </div>
-                                            <h3 className="mt-2 text-lg tracking-tight">
+                                            <h2 className="text-2xl font-playfair font-medium tracking-tight group-hover:text-primary transition-colors">
                                                 {project.title}
-                                            </h3>
-                                            <p className="text-muted-foreground pb-4 pt-2 text-sm md:text-base">
-                                                {project.description}
-                                            </p>
-
-                                            <div className="sr-only flex flex-wrap gap-2 mb-4">
+                                            </h2>
+                                            <div className="flex flex-wrap gap-2 mt-3">
                                                 {project.tags.map((tag, tagIndex) => (
                                                     <span
                                                         key={tagIndex}
-                                                        className="inline-flex items-center rounded-full bg-muted px-2.5 py-0.5 text-xs font-medium text-muted-foreground"
+                                                        className="inline-flex items-center rounded-md bg-stone-200/50 px-2 py-1 text-xs font-medium text-muted-foreground"
                                                     >
                                                         {tag}
                                                     </span>
                                                 ))}
                                             </div>
+                                        </div>
 
-                                            <div className="flex items-center justify-between mt-auto">
-                                                <div className="sr-only text-xs text-muted-foreground">
-                                                    {Object.entries(project.stats).map(([key, value]) => (
-                                                        <div key={key}>{key}: {value}</div>
-                                                    ))}
-                                                </div>
+                                        {/* Description & Stats Column */}
+                                        <div className="flex-grow space-y-6">
+                                            <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
+                                                {project.description}
+                                            </p>
+
+                                            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 py-4 border-y border-dashed">
+                                                {Object.entries(project.stats).map(([key, value]) => (
+                                                    <div key={key} className="flex flex-col">
+                                                        <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
+                                                            {key}
+                                                        </span>
+                                                        <span className="text-sm font-semibold text-foreground mt-0.5">
+                                                            {value}
+                                                        </span>
+                                                    </div>
+                                                ))}
+                                            </div>
+
+                                            <div className="pt-2">
                                                 <Link
                                                     href={project.link}
                                                     target="_blank"
-                                                    className="ml-auto inline-flex items-center gap-1 text-sm font-medium text-foreground hover:opacity-70 transition-opacity"
+                                                    className="inline-flex items-center gap-2 text-sm font-semibold text-foreground hover:text-primary transition-colors group/link"
                                                 >
                                                     View on Hugging Face
-                                                    <ExternalLink className="h-3 w-3" />
+                                                    <ExternalLink className="h-4 w-4 transition-transform group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" />
                                                 </Link>
                                             </div>
                                         </div>
-
-                                        <div className="border-t mt-6 pt-6 px-4 lg:px-8">
-                                            <div className="h-32 bg-gradient-to-r from-muted to-muted/50 rounded-lg flex items-center justify-center">
-                                                <span className="text-muted-foreground text-sm"></span>
-                                            </div>
-                                        </div>
-                                    </motion.div>
-                                ))}
-                            </div>
+                                    </div>
+                                </motion.div>
+                            ))}
                         </div>
                     </div>
 
@@ -148,7 +152,7 @@ export default function ProjectsPage() {
                 </section>
             </main>
 
-            <HomeFooter />
+            <Footer />
         </div>
     );
 }

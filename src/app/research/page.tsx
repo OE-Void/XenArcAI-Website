@@ -1,10 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ExternalLink } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
-
-import HomeFooter from "@/components/HomeFooter";
+import Footer from "@/components/Footer";
 
 const researchPapers = [
   {
@@ -41,8 +40,6 @@ export default function ResearchPage() {
 
   return (
     <div className="bg-stone-100 min-h-screen flex flex-col">
-
-
       <main className="flex-grow pt-24 md:pt-32">
         <section className="py-16 md:py-32 max-w-7xl mx-auto">
           {/* Header Section */}
@@ -71,51 +68,39 @@ export default function ResearchPage() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.15 }}
-                  className="py-8 px-6 md:py-12 md:px-8 hover:bg-stone-50/50 transition-all duration-200"
+                  className="group py-8 px-6 md:py-12 md:px-8 hover:bg-stone-50/50 transition-all duration-200"
                 >
-                  <div className="flex flex-col gap-4">
-                    {/* Badges */}
-                    <div className="flex items-center gap-2">
-                      <span className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
-                        {paper.category}
-                      </span>
-                      <span className="text-muted-foreground">·</span>
-                      <span className={`text-xs font-medium uppercase tracking-wide ${paper.status === "Published"
-                        ? "text-green-600"
-                        : "text-yellow-600"
-                        }`}>
-                        {paper.status}
-                      </span>
+                  <Link href={paper.link} className="flex flex-col gap-4">
+                    {/* Meta */}
+                    <div className="flex items-center gap-3 text-xs text-muted-foreground uppercase tracking-wide font-medium">
+                      <span>{paper.date}</span>
+                      <span>·</span>
+                      <span>{paper.category}</span>
                     </div>
 
                     {/* Title */}
-                    <h2 className="text-xl md:text-2xl font-semibold tracking-tight leading-tight">
+                    <h2 className="text-xl md:text-3xl font-playfair font-medium tracking-tight group-hover:text-primary transition-colors">
                       {paper.title}
                     </h2>
 
-                    {/* Meta */}
-                    <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
-                      <span>{paper.authors.join(", ")}</span>
-                      <span>·</span>
-                      <span>{paper.date}</span>
-                    </div>
-
                     {/* Abstract */}
-                    <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+                    <p className="text-sm md:text-base text-muted-foreground leading-relaxed max-w-3xl">
                       {paper.abstract}
                     </p>
 
-                    {/* Action */}
-                    <div className="pt-2">
-                      <Link
-                        href={paper.link}
-                        className="inline-flex items-center gap-2 text-sm font-semibold text-foreground hover:text-primary transition-colors"
-                      >
+                    {/* Authors & Action */}
+                    <div className="flex items-center justify-between pt-2">
+                      <div className="flex gap-2">
+                        <span className="text-xs font-medium text-muted-foreground bg-stone-200/50 px-2 py-1 rounded-md">
+                          {paper.authors.join(", ")}
+                        </span>
+                      </div>
+                      <span className="inline-flex items-center gap-2 text-sm font-semibold text-foreground group-hover:translate-x-1 transition-transform">
                         Read paper
-                        <ExternalLink className="h-3.5 w-3.5" />
-                      </Link>
+                        <ArrowRight className="h-4 w-4" />
+                      </span>
                     </div>
-                  </div>
+                  </Link>
                 </motion.article>
               ))}
             </div>
@@ -128,7 +113,7 @@ export default function ResearchPage() {
         </section>
       </main>
 
-      <HomeFooter />
+      <Footer />
     </div>
   );
 }

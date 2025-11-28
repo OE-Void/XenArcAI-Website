@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
-import HomeFooter from "@/components/HomeFooter";
+import Footer from "@/components/Footer";
 
 const blogPosts = [
   {
@@ -48,7 +48,7 @@ export default function BlogPage() {
               className="container flex flex-col gap-6 border-x py-4 max-lg:border-x lg:py-8 px-4 md:px-7"
             >
               <h1 className="text-4xl font-playfair font-medium tracking-tight md:text-5xl lg:text-7xl text-foreground">
-                Blog
+                Blogs
               </h1>
               <p className="text-muted-foreground max-w-[600px] tracking-[-0.32px] text-sm md:text-base">
                 Insights, updates, and thoughts from the XenArcAI team on the future of artificial intelligence.
@@ -112,7 +112,7 @@ export default function BlogPage() {
         </section>
       </main>
 
-      <HomeFooter />
+      <Footer />
     </div>
   );
 }

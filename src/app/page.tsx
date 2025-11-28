@@ -1,28 +1,28 @@
-import { HomeHero } from "@/components/HomeHero";
-import { HomeLogos } from "@/components/HomeLogos";
-import { HomeFeatures } from "@/components/HomeFeatures";
-import { HomeFeaturesSecondary } from "@/components/HomeFeaturesSecondary";
+import { Hero } from "@/components/Hero";
+import { Partners } from "@/components/Partners";
+import { ResearchAreas } from "@/components/ResearchAreas";
+import { MissionValues } from "@/components/MissionValues";
 import dynamic from "next/dynamic";
 
 // Lazy load components that are below the fold
-const HomeProjects = dynamic(() => import("@/components/HomeProjects"));
-const HomeTestimonials = dynamic(() => import("@/components/HomeTestimonials"));
-const HomePricing = dynamic(() => import("@/components/HomePricing"));
-const HomeFAQ = dynamic(() => import("@/components/HomeFAQ"));
-const HomeFooter = dynamic(() => import("@/components/HomeFooter"));
+const FeaturedProjects = dynamic(() => import("@/components/FeaturedProjects"));
+const Testimonials = dynamic(() => import("@/components/Testimonials"));
+const Pricing = dynamic(() => import("@/components/Pricing"));
+const FAQ = dynamic(() => import("@/components/FAQ"));
+const Footer = dynamic(() => import("@/components/Footer"));
 
 export default function Home() {
   return (
     <div className="bg-stone-100">
-      <HomeHero />
-      <HomeLogos />
-      <HomeFeatures />
-      <HomeFeaturesSecondary />
-      <HomeProjects />
-      <HomeTestimonials />
-      <HomePricing />
-      <HomeFAQ />
-      <HomeFooter />
+      <Hero />
+      <Partners />
+      <ResearchAreas />
+      <MissionValues />
+      <FeaturedProjects />
+      <Testimonials />
+      <Pricing />
+      <FAQ />
+      <Footer />
     </div>
   );
 }

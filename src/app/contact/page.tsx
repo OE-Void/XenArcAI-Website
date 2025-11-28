@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Mail, MapPin, Phone, Send } from "lucide-react";
 import Link from "next/link";
 
-import HomeFooter from "@/components/HomeFooter";
+import Footer from "@/components/Footer";
 
 export default function ContactPage() {
     return (
@@ -183,7 +183,7 @@ export default function ContactPage() {
                 </section>
             </main>
 
-            <HomeFooter />
+            <Footer />
         </div>
     );
 }
